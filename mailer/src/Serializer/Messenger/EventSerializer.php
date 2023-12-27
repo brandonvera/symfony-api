@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Mailer\Serializer\Messenger;
 
 use Mailer\Messenger\Message\UserRegisteredMessage;
+use Mailer\Messenger\Message\RequestResetPasswordMessage;
 use Symfony\Component\Messenger\Envelope;
 use Symfony\Component\Messenger\Transport\Serialization\Serializer;
 
