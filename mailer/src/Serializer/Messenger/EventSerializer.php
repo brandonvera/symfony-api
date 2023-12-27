@@ -21,7 +21,10 @@ class EventSerializer extends Serializer
 
     private function translateType(string $type): string
     {
-        $map = ['App\Messenger\Message\UserRegisteredMessage' => UserRegisteredMessage::class];
+        $map = [
+            'App\Messenger\Message\UserRegisteredMessage' => UserRegisteredMessage::class,
+            'App\Messenger\Message\RequestResetPasswordMessage' => RequestResetPasswordMessage::class,
+        ];
 
         if (\array_key_exists($type, $map)) {
             return $map[$type];
