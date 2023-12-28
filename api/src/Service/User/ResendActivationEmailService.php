@@ -12,6 +12,8 @@ use App\Service\Request\RequestService;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Messenger\Bridge\Amqp\Transport\AmqpStamp;
 use Symfony\Component\Messenger\MessageBusInterface;
+use Doctrine\ORM\OptimisticLockException;
+use Doctrine\ORM\ORMException;
 
 class ResendActivationEmailService
 {
@@ -24,9 +26,12 @@ class ResendActivationEmailService
         $this->messageBus = $messageBus;
     }
 
-    public function resend(Request $request): void
+    /**
+     * @throws ORMException
+     * @throws OptimisticLockException
+     */
+    public function resend(string $email): void
     {
-        $email = RequestService::getField($request, 'email');
         $user = $this->userRepository->findOneByEmailOrFail($email);
 
         if ($user->isActive()) {
