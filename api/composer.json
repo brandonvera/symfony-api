@@ -89,7 +89,7 @@
         }
     },
     "require-dev": {
-        "hautelook/alice-bundle": "^2.6",
+        "hautelook/alice-bundle": "^2.7",
         "liip/test-fixtures-bundle": "^1.0.0",
         "phpunit/phpunit": "^9.5",
         "symfony/browser-kit": "5.4.*",
