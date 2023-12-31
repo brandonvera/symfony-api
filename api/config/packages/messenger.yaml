@@ -25,4 +25,4 @@ when@test:
     framework:
         messenger:
             transports:
-            amqp_user: 'in-memory://'
+                amqp_user: 'in-memory://'
