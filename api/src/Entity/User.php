@@ -9,7 +9,7 @@ use Symfony\Component\Uid\Uuid;
 
 class User implements UserInterface
 {
-    //inicializando variables con los campos de user
+    // inicializando variables con los campos de user
     private string $id;
     private string $name;
     private string $email;
@@ -23,12 +23,12 @@ class User implements UserInterface
 
     public function __construct(string $name, string $email)
     {
-        $this->id = Uuid::v4()->toRfc4122();//uuid de symfony y volviendolo string
+        $this->id = Uuid::v4()->toRfc4122(); // uuid de symfony y volviendolo string
         $this->name = $name;
         $this->setEmail($email);
         $this->password = null;
         $this->avatar = null;
-        $this->token = \sha1(\uniqid());//asignando token random
+        $this->token = \sha1(\uniqid()); // asignando token random
         $this->resetPasswordToken = null;
         $this->active = false;
         $this->createdAt = new \DateTime();
@@ -57,7 +57,7 @@ class User implements UserInterface
 
     public function setEmail(string $email): void
     {
-        //hacer filtro si es valido el email
+        // hacer filtro si es valido el email
         if (!\filter_var($email, \FILTER_VALIDATE_EMAIL)) {
             throw new \LogicException('Invalid email');
         }
@@ -125,13 +125,13 @@ class User implements UserInterface
         return $this->updatedAt;
     }
 
-    //funcion para marcar el update, no tiene setter
+    // funcion para marcar el update, no tiene setter
     public function markAsUpdated(): void
     {
         $this->updatedAt = new \DateTime();
     }
 
-    //funciones de la interface de security core de symfony
+    // funciones de la interface de security core de symfony
     public function getRoles(): array
     {
         return [];

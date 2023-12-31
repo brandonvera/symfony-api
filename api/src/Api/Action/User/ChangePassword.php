@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Api\Action\User;
 
 use App\Entity\User;
+use App\Service\Request\RequestService;
 use App\Service\User\ChangePasswordService;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;

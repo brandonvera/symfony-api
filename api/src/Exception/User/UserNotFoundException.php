@@ -8,13 +8,13 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class UserNotFoundException extends NotFoundHttpException
 {
-    //mensaje de excepcion
+    // mensaje de excepcion
     private const MESSAGE = 'User with email %s not found';
 
-    //funcion estatica
+    // funcion estatica
     public static function fromEmail(string $email): self
     {
-        //lanzando exceocion de si misma (self)
+        // lanzando exceocion de si misma (self)
         throw new self(\sprintf(self::MESSAGE, $email));
     }
 

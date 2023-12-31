@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Api\Action\User;
 
 use App\Entity\User;
+use App\Service\Request\RequestService;
 use App\Service\User\UserRegisterService;
 use Symfony\Component\HttpFoundation\Request;
 
