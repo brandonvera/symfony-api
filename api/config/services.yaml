@@ -10,6 +10,8 @@ services:
     _defaults:
         autowire: true      # Automatically injects dependencies in your services.
         autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+        bind:
+            $mediaPath: '%env(resolve:SUBDOMAIN)%'
 
     # makes classes in src/ available to be used as services
     # this creates a service per class whose id is the fully-qualified class name
@@ -30,5 +32,15 @@ services:
     App\Api\Listener\JWTCreatedListener:
         tags:
             - { name: kernel.event_listener, event: lexik_jwt_authentication.on_jwt_created, method: onJWTCreated }        
+    
+    app.images.s3:
+        class: Aws\S3\S3Client
+        arguments:
+            - version: '%env(resolve:VERSION)%'
+              region: '%env(resolve:REGION)%'
+              endpoint: '%env(resolve:ENDPOINT)%'
+              credentials:
+                  key: '%env(resolve:KEY)%'
+                  secret: '%env(resolve:SECRET)%'
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
