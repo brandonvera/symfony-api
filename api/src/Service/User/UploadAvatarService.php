@@ -13,16 +13,16 @@ use Symfony\Component\HttpFoundation\Request;
 
 class UploadAvatarService
 {
-    // private UserRepository $userRepository;
-    // private FileService $fileService;
-    // private string $mediaPath;
+    private UserRepository $userRepository;
+    private FileService $fileService;
+    private string $mediaPath;
 
-    // public function __construct(UserRepository $userRepository, FileService $fileService, string $mediaPath)
-    // {
-    //     $this->userRepository = $userRepository;
-    //     $this->fileService = $fileService;
-    //     $this->mediaPath = $mediaPath;
-    // }
+    public function __construct(UserRepository $userRepository, FileService $fileService, string $mediaPath)
+    {
+        $this->userRepository = $userRepository;
+        $this->fileService = $fileService;
+        $this->mediaPath = $mediaPath;
+    }
 
     /**
      * @throws ORMException
@@ -30,15 +30,15 @@ class UploadAvatarService
      */
     public function uploadAvatar(Request $request, User $user): User
     {
-        // $file = $this->fileService->validateFile($request, FileService::AVATAR_INPUT_NAME);
+        $file = $this->fileService->validateFile($request, FileService::AVATAR_INPUT_NAME);
 
-        // $this->fileService->deleteFile($user->getAvatar());
+        $this->fileService->deleteFile($user->getAvatar());
 
-        // $fileName = $this->fileService->uploadFile($file, FileService::AVATAR_INPUT_NAME);
+        $fileName = $this->fileService->uploadFile($file, FileService::AVATAR_INPUT_NAME);
 
-        // $user->setAvatar($fileName);
+        $user->setAvatar($fileName);
 
-        // $this->userRepository->save($user);
+        $this->userRepository->save($user);
 
         return $user;
     }
