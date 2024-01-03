@@ -7,3 +7,9 @@ flysystem:
                 client: 'app.images.s3'
                 bucket: '%env(resolve:BUCKET)%'
                 prefix: '%env(resolve:PREFIX)%'
+
+when@test:
+    flysystem:
+        storages:
+            default.storage:
+                adapter: 'memory'
