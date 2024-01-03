@@ -141,7 +141,7 @@ App\Entity\User:
             content:
               application/ld+json:
                 schema:
-                  # $ref: '#/components/schemas/User:jsonld-user_read'
+                  $ref: '#/components/schemas/User.jsonld-user_read'
     change_password:
       method: PUT
       path: /users/{id}/change_password
